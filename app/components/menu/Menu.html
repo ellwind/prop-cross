@@ -1,0 +1,9 @@
+<menu class="application-menu row">
+    <menuitem ng-repeat="(key, value) in $ctrl.menu"
+              class="gr-adapt application-menu-item screen-item effect-ripple">
+        <a class="gr-grow application-menu-link"
+           ui-sref="{{value['ui-sref']}}">
+            <span>{{value['title']}}</span>
+        </a>
+    </menuitem>
+</menu>
