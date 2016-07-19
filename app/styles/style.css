@@ -1,0 +1,28 @@
+.search-results .row {
+    margin-bottom:10px;
+}
+
+.row-hover {
+    cursor:pointer;
+}
+.row-hover:hover {
+    background: #f5f5f5;
+}
+
+.load-more .loader {
+    background: url('/img/loader.gif')no-repeat;
+    width:15px;
+    height:15px;
+    background-size:100%;
+    display:inline-block;
+}
+
+.favorites {
+    font-size:40px !important;
+    color: #828282;
+    cursor:pointer;
+}
+
+.favorites.active {
+    color:#f2a20a;
+}

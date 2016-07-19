@@ -2,7 +2,7 @@ function mainRoutes($stateProvider) {
     'ngInject';
     $stateProvider
         .state('main', {
-            url: '/main',
+            url: '/',
             template: require('./main.html'),
             controller: 'MainController',
             controllerAs: 'main'
