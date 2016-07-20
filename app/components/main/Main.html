@@ -9,35 +9,52 @@
         </li>
     </ul>
     <form class="form-inline pull-xs-right" ng-submit="main.searchLoc(false, searchForm.search.$viewValue)" name="searchForm">
-        <input class="form-control" type="text" placeholder="Search" name="search" ng-model="search">
+        <input class="form-control" type="text" placeholder="Search" name="search" ng-model="main.search">
         <button class="btn btn-success-outline" type="submit">Search</button>
     </form>
+    <button class="btn btn-success-outline pull-xs-right margin-right" type="button" ng-click="main.myLoc()">My location</button>
 </nav>
 <div class="container">
     <p class="lead">Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
     <img ng-src="img/loader.gif" alt="" ng-show="!main.propList.length && main.loading">
     <div class="search-results" ng-if="main.propList.length > 0">
-        <h2>Please select a location below:</h2>
+        <h2>{{main.propList.length}} of {{main.totalResults}} matches</h2>
+
         <div class="row row-hover" ng-repeat="prop in main.propList track by $index" ng-click="main.preview(prop)">
-            <div class="col-md-2">
-                <img ng-src="{{prop.thumb_url}}" alt="{{prop.title}}" width="100%">
+            <div class="col-md-3">
+                <img ng-src="{{prop.img_url}}" alt="{{prop.title}}" width="100%">
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <p>{{prop.price_formatted}}</p>
                 <p>{{prop.title}}</p>
             </div>
         </div>
+    </div>
 
-    </div>
-    <div class="load-more" ng-if="main.propList && main.loadMore">
-        <button type="button" class="btn btn-secondary btn-lg" ng-click="main.searchLoc(true)">Load more</button>
+    <div class="load-more" ng-if="main.propList && main.loadMore && !main.errorMessage">
+        <button type="button" class="btn btn-secondary btn-lg" ng-click="main.searchLoc(true)">Load more ... 20 results for {{main.filter.place_name}}</button>
+        <span>Showing {{main.propList.length}} of {{main.totalResults}}</span>
         <span class="loader" ng-show="main.loading"></span>
+        <span class="error-load-more" ng-show="main.errorLoadMore" ng-bind="main.errorLoadMore"></span>
     </div>
-    <div class="recent-search" ng-hide="main.propList.length > 0 || main.loading">
+
+    <div class="recent-search" ng-hide="main.propList.length > 0 || main.loading || main.errorMessage || !main.recentSearchList">
         <h2>Recent searches:</h2>
         <div class="row row-hover" ng-repeat="search in main.recentSearchList track by $index" ng-click="main.applySearch(search)">
             <div class="col-md-12">
                 <p>{{search.filter.place_name}}({{search.data.length}} of {{search.totalResults}})</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="error-message" ng-if="main.errorMessage">
+        <h2>{{main.errorMessage}}</h2>
+    </div>
+
+    <div class="ambiguous-loc">
+        <div class="row row-hover" ng-repeat="loc in main.locList track by $index" ng-click="main.locSearch(loc)">
+            <div class="col-md-12">
+                <p>{{loc.place_name}}</p>
             </div>
         </div>
     </div>
