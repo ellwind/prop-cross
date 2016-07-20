@@ -26,3 +26,12 @@
 .favorites.active {
     color:#f2a20a;
 }
+
+.error-load-more {
+    display:block;
+    color:#f00;
+}
+
+.margin-right {
+    margin-right:10px;
+}
