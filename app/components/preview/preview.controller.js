@@ -20,7 +20,7 @@ export default class PreviewController {
     }
 
     addToFavs() {
-        var favs = localStorage.getItem('recentSearch') && JSON.parse(localStorage.getItem('recentSearch')) || [];
+        var favs = localStorage.getItem('favorites') && JSON.parse(localStorage.getItem('favorites')) || [];
 
         if(!favs){
             localStorage.setItem('favorites', JSON.stringify(this.property));
