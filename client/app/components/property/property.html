@@ -1,0 +1,21 @@
+<navbar></navbar>
+<div class="container" ng-if="$ctrl.property">
+  <div class="row">
+    <div class="col-md-9">
+      <h1>Property details</h1>
+    </div>
+    <div class="col-md-3">
+      <button
+        class="btn btn-success-outline"
+        ng-class="{active: $ctrl.storageService.isFavorite($ctrl.property)}"
+        ng-click="$ctrl.storageService.setFavorite($ctrl.property)">{{$ctrl.favText()}} favorites</button>
+    </div>
+  </div>
+  <div class="property-info">
+    <p class="lead">{{$ctrl.property.price_formatted}}</p>
+    <p class="lead">{{$ctrl.property.title}}</p>
+    <img ng-src="{{$ctrl.property.img_url}}" alt="{{$ctrl.property.title}}">
+    <p><span ng-if="$ctrl.property.bedroom_number">{{$ctrl.property.bedroom_number}} bedroom(s)</span><span ng-if="$ctrl.property.bathroom_number">, {{$ctrl.property.bathroom_number}} bathroom(s)</span></p>
+    <p>{{$ctrl.property.summary}}</p>
+  </div>
+</div>

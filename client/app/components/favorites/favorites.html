@@ -1,0 +1,18 @@
+<navbar></navbar>
+<div class="container">
+  <h1>Favorites</h1>
+  <div class="search-results" ng-if="$ctrl.favoritesList.length > 0">
+    <div class="row row-hover" ng-repeat="prop in $ctrl.favoritesList track by $index" ng-click="$ctrl.preview(prop)">
+      <div class="col-md-2">
+        <img ng-src="{{prop.thumb_url}}" alt="{{prop.title}}" width="100px">
+      </div>
+      <div class="col-md-10">
+        <p>{{prop.price_formatted}}</p>
+        <p>{{prop.title}}</p>
+      </div>
+    </div>
+  </div>
+  <div ng-if="!$ctrl.favoritesList.length">
+    <h2>You have not added any properties to your favourites</h2>
+  </div>
+</div>

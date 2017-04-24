@@ -1,8 +1,7 @@
+.DS_Store
+.tmp
+.git
 node_modules
-bin/bundle.js
-bin/1dc35d25e61d819a9c357074014867ab.ttf
-bin/25a32416abee198dd821b0b17a198a8f.eot
-bin/c8ddf1e5e5bf3682bc7bebf30f394148.woff
-bin/d7c639084f684d66a1bc66855d193ed8.svg
-bin/e6cf7c6ec7c2d6f670ae9d762604cb0b.woff2
-.idea
+.settings
+*.log
+dist/

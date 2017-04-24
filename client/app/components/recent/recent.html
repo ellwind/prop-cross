@@ -1,0 +1,15 @@
+<navbar></navbar>
+<div class="container">
+  <search-block></search-block>
+  <section class="recent">
+    <div class="recent-search" nf-if="$ctrl.recentList.length">
+      <h2>Recent searches:</h2>
+      <div class="row row-hover" ng-repeat="search in $ctrl.recentList track by $index" ng-click="$ctrl.makeSearch(search.place)">
+        <div class="col-md-12">
+          <p>{{search.place}} ({{search.total}})</p>
+        </div>
+      </div>
+    </div>
+    <div class="" ng-if="!$ctrl.recentList.length">No recent searches yet</div>
+  </section>
+</div>

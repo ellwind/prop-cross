@@ -1,0 +1,30 @@
+<navbar></navbar>
+<div class="container">
+  <search-block></search-block>
+  <section>
+    <img ng-src="img/spinner.gif" alt="" ng-show="!$ctrl.propList.length && $ctrl.loading">
+
+    <div class="search-results" ng-if="$ctrl.propList.length > 0">
+      <h2>{{$ctrl.propList.length}} of {{$ctrl.totalResults}} matches</h2>
+
+      <div class="row row-hover" ng-repeat="prop in $ctrl.propList track by $index" ng-click="$ctrl.preview(prop)">
+        <div class="col-md-3">
+          <img ng-src="{{prop.img_url}}" alt="{{prop.title}}" width="100%">
+        </div>
+        <div class="col-md-9">
+          <p>{{prop.price_formatted}}</p>
+          <p>{{prop.title}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="load-more" ng-if="$ctrl.propList && $ctrl.loadMore && !$ctrl.errorMessage">
+      <button type="button" class="btn btn-secondary btn-lg" ng-click="$ctrl.searchLoc()">{{$ctrl.loadMoreMessage()}} for 20 results for {{$ctrl.filter.place_name}}</button>
+      <span class="spinner" ng-show="$ctrl.loading"><img ng-src="img/spinner.gif"></span>
+      <span>Showing {{$ctrl.propList.length}} of {{$ctrl.totalResults}}</span>
+      <span class="error-load-more" ng-show="$ctrl.errorLoadMore" ng-bind="$ctrl.errorLoadMore"></span>
+    </div>
+    <div class="error-message" ng-if="$ctrl.errorMessage">
+      <h2>{{$ctrl.errorMessage}}</h2>
+    </div>
+  </section>
+</div>
